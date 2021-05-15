@@ -9,13 +9,13 @@ import java.sql.SQLException;
 @Configuration
 public class H2Config {
 
-    @Bean(initMethod = "start", destroyMethod = "stop")
-    public Server createH2Server() {
-        try {
-            return Server.createTcpServer("-tcp");
-        } catch (SQLException exc) {
-            exc.getErrorCode();
-            return null;
-        }
+  @Bean(initMethod = "start", destroyMethod = "stop")
+  public Server createH2Server() {
+    try {
+      return Server.createTcpServer("-tcp");
+    } catch (SQLException exc) {
+      exc.getErrorCode();
+      return null;
     }
+  }
 }

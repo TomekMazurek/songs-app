@@ -1,21 +1,24 @@
 package com.github.tomekmazurek.songsapp.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "author")
 @NoArgsConstructor
-@Data
+@AllArgsConstructor
+@Getter
+@Setter
 public class Author {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @Column
-    String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    public Author(String name){
-        this.name = name;
-    }
+  @Column private String name;
+
+
+  public Author(String name) {
+    this.name = name;
+  }
 }
