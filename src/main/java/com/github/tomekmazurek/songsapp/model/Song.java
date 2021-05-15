@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity(name = "song")
 @Getter
@@ -47,5 +48,22 @@ public class Song implements Serializable {
     this.title = title;
     this.author = author;
     this.album = album;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Song song = (Song) o;
+    return title.equals(song.title)
+        && author.equals(song.author)
+        && album.equals(song.album)
+        && category == song.category
+        && Objects.equals(votes, song.votes);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(title, author, album, category);
   }
 }

@@ -1,7 +1,5 @@
 package com.github.tomekmazurek.songsapp.model;
 
-import javax.persistence.Entity;
-
 public enum Category {
   ALTERNATIVE("Alternative"),
   ANIME("Anime"),

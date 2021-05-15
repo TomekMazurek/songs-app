@@ -1,6 +1,5 @@
 package com.github.tomekmazurek.songsapp.configuration;
 
-import com.github.tomekmazurek.songsapp.repository.SongRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,14 +11,11 @@ import springfox.documentation.spring.web.plugins.Docket;
 @ComponentScan("com.github.tomekmazurek.songsapp")
 public class Config {
 
-
-
-  // this hides default Api requests error by SpringBoot
   @Bean
-  public Docket swaggerApi(){
+  public Docket swaggerApi() {
     return new Docket(DocumentationType.SWAGGER_2)
-            .select()
-            .paths(PathSelectors.regex("^(?!/(error).*$).*$"))
-            .build();
+        .select()
+        .paths(PathSelectors.regex("^(?!/(error).*$).*$"))
+        .build();
   }
 }

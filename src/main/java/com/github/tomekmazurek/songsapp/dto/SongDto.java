@@ -7,7 +7,6 @@ import lombok.*;
 @Data
 @Setter
 @NoArgsConstructor
-
 @Builder
 public class SongDto {
   Long id;
