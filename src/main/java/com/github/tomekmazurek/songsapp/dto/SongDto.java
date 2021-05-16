@@ -31,4 +31,17 @@ public class SongDto {
     this.category = category;
     this.votes = votes;
   }
+  @JsonCreator
+  public SongDto(
+          @JsonProperty("title") String title,
+          @JsonProperty("author") String author,
+          @JsonProperty("album") String album,
+          @JsonProperty("category") String category,
+          @JsonProperty("votes") int votes) {
+    this.title = title;
+    this.author = author;
+    this.album = album;
+    this.category = category;
+    this.votes = votes;
+  }
 }
