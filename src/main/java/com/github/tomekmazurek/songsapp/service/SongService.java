@@ -21,13 +21,14 @@ public class SongService {
   }
 
   public SongDto getSingleSong(Long id) {
-    return SongDtoMapper.mapToDto(songRepository.findById(id).orElseThrow());
+    return SongDtoMapper.mapToSongDto(songRepository.findById(id).orElseThrow());
   }
 
   public SongDto addSong(SongDto songDto) {
     if (!songRepository.checkIfSongExists(
         songDto.getTitle(), songDto.getAuthor(), songDto.getAlbum())) {
-      return SongDtoMapper.mapToDto(songRepository.save(SongDtoMapper.convertToEntity(songDto)));
+      return SongDtoMapper.mapToSongDto(
+          songRepository.save(SongDtoMapper.convertToEntity(songDto)));
     }
     throw new IllegalArgumentException("Song already exists in database");
   }
@@ -35,7 +36,7 @@ public class SongService {
   public SongDto voteForSong(Long id) {
     var votedSong = songRepository.getOne(id);
     votedSong.setVotes(votedSong.getVotes() + 1);
-    return SongDtoMapper.mapToDto(songRepository.save(votedSong));
+    return SongDtoMapper.mapToSongDto(songRepository.save(votedSong));
   }
 
   public List<SongDto> clearAllVotes() {
@@ -47,7 +48,7 @@ public class SongService {
   public SongDto clearVotes(Long id) {
     var song = songRepository.findById(id).orElseThrow();
     song.setVotes(0);
-    return SongDtoMapper.mapToDto(songRepository.save(song));
+    return SongDtoMapper.mapToSongDto(songRepository.save(song));
   }
 
   public SongDto updateSong(Long id, SongDto songDto) {
@@ -58,7 +59,7 @@ public class SongService {
       readFromDatabase.setTitle(toBeUpdated.getTitle());
       readFromDatabase.setAlbum(toBeUpdated.getAlbum());
       readFromDatabase.setCategory(toBeUpdated.getCategory());
-      return SongDtoMapper.mapToDto(songRepository.save(readFromDatabase));
+      return SongDtoMapper.mapToSongDto(songRepository.save(readFromDatabase));
     }
     throw new IllegalArgumentException("Nothing changed");
   }
