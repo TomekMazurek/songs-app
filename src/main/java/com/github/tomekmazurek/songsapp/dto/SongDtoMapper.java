@@ -36,7 +36,7 @@ public class SongDtoMapper {
         songDto.getVotes());
   }
 
-  private static Category parseStringToCategory(String category) {
+  public static Category parseStringToCategory(String category) {
     Category[] categories = Category.values();
     for (Category style : categories) {
       if (category.equalsIgnoreCase(style.getValue())) {
