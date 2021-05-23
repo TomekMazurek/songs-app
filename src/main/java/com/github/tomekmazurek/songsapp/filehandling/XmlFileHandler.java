@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class XmlFileHandler implements FileHandler {
-  private  final Pattern unescapedAmpersands;
+  private final Pattern unescapedAmpersands;
 
   public XmlFileHandler() {
     this.unescapedAmpersands = Pattern.compile("(&(?!amp;))");
@@ -21,7 +21,16 @@ public class XmlFileHandler implements FileHandler {
 
   @Override
   public File writeToFile(List<SongDto> report) {
-    return null;
+    File generatedFile = new File("report.xml");
+    SongsXml songsXml = new SongsXml(report);
+    Serializer serializer = new Persister();
+    try {
+      serializer.write(songsXml, generatedFile);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return generatedFile;
   }
 
   @Override
