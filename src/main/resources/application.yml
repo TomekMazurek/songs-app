@@ -20,3 +20,9 @@ spring:
   h2:
     console:
       enabled: true
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 50MB
+      max-request-size: 60MB
