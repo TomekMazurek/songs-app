@@ -54,7 +54,7 @@ public class Song implements Serializable {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Song song = (Song) o;
+    var song = (Song) o;
     return title.equals(song.title)
         && author.equals(song.author)
         && album.equals(song.album)

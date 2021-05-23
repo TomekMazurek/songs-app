@@ -29,7 +29,7 @@ public class Author implements Serializable {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Author author = (Author) o;
+    var author = (Author) o;
     return name.equals(author.name);
   }
 
