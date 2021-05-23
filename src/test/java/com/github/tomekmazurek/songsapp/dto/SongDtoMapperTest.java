@@ -52,8 +52,9 @@ class SongDtoMapperTest {
     Song convertedToSong = SongDtoMapper.convertToEntity(songDto);
 
     // then
-    assertThat(convertedToSong).isEqualTo(expectedAfterConversion);
-    assertThat(convertedToSong).isNotEqualTo(anotherSongExample);
+    assertThat(convertedToSong)
+            .isEqualTo(expectedAfterConversion)
+            .isNotEqualTo(anotherSongExample);
   }
 
   @Test

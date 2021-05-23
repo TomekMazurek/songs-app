@@ -28,7 +28,7 @@ public class Album implements Serializable {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Album album = (Album) o;
+    var album = (Album) o;
     return name.equals(album.name);
   }
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 class XmlFileHandlerTest {
   @Test
-  public void shouldReadDataFromFile() {
+   void shouldReadDataFromFile() {
     // given
     MockMultipartFile mockFile = FileHandlerMother.getXmlTestFile();
 

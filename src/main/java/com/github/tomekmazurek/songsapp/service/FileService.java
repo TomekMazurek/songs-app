@@ -6,6 +6,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class FileService {
   private SongService songService;
   private FileHandler fileHandler;
-  private List<SongDto> songs;
+
 
   public FileService(SongService songService) {
     this.songService = songService;
@@ -24,13 +25,13 @@ public class FileService {
     readDataFromFile(fileExtension, file);
   }
 
-  public MultipartFile generateFile(FileType fileType, ReportType reportType) {
+  public File generateFile(FileType fileType, ReportType reportType) {
     return null;
   }
 
   private void readDataFromFile(String fileExtension, MultipartFile file) {
     selectFileHandlerByFileExtension(fileExtension);
-    songs = new ArrayList<>(fileHandler.readFile(file));
+    List<SongDto> songs = new ArrayList<>(fileHandler.readFile(file));
     songs.stream().forEach(songService::addSong);
   }
 
