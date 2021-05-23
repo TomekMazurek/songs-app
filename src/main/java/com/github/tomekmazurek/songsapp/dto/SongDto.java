@@ -2,6 +2,7 @@ package com.github.tomekmazurek.songsapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.opencsv.bean.CsvBindByName;
 import lombok.*;
 
 @Data
@@ -10,11 +11,11 @@ import lombok.*;
 @Builder
 public class SongDto {
   Long id;
-  String title;
-  String author;
-  String album;
-  String category;
-  int votes;
+  @CsvBindByName String title;
+  @CsvBindByName String author;
+  @CsvBindByName String album;
+  @CsvBindByName String category;
+  @CsvBindByName int votes;
 
   @JsonCreator
   public SongDto(
@@ -31,13 +32,14 @@ public class SongDto {
     this.category = category;
     this.votes = votes;
   }
+
   @JsonCreator
   public SongDto(
-          @JsonProperty("title") String title,
-          @JsonProperty("author") String author,
-          @JsonProperty("album") String album,
-          @JsonProperty("category") String category,
-          @JsonProperty("votes") int votes) {
+      @JsonProperty("title") String title,
+      @JsonProperty("author") String author,
+      @JsonProperty("album") String album,
+      @JsonProperty("category") String category,
+      @JsonProperty("votes") int votes) {
     this.title = title;
     this.author = author;
     this.album = album;
