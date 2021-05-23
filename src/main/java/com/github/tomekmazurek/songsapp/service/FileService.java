@@ -21,14 +21,14 @@ public class FileService {
 
   public void processFile(MultipartFile file) {
     String fileExtension = FilenameUtils.getExtension(file.getOriginalFilename());
-    writeDataFromFile(fileExtension, file);
+    readDataFromFile(fileExtension, file);
   }
 
   public MultipartFile generateFile(FileType fileType, ReportType reportType) {
     return null;
   }
 
-  private void writeDataFromFile(String fileExtension, MultipartFile file) {
+  private void readDataFromFile(String fileExtension, MultipartFile file) {
     selectFileHandlerByFileExtension(fileExtension);
     songs = new ArrayList<>(fileHandler.readFile(file));
     songs.stream().forEach(songService::addSong);

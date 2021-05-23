@@ -4,18 +4,36 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.opencsv.bean.CsvBindByName;
 import lombok.*;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
 @Data
 @Setter
 @NoArgsConstructor
 @Builder
+@Root(name = "song")
 public class SongDto {
   Long id;
-  @CsvBindByName String title;
-  @CsvBindByName String author;
-  @CsvBindByName String album;
-  @CsvBindByName String category;
-  @CsvBindByName int votes;
+
+  @CsvBindByName
+  @Element(name = "title")
+  String title;
+
+  @CsvBindByName
+  @Element(name = "author")
+  String author;
+
+  @CsvBindByName
+  @Element(name = "album")
+  String album;
+
+  @CsvBindByName
+  @Element(name = "category")
+  String category;
+
+  @CsvBindByName
+  @Element(name = "votes")
+  int votes;
 
   @JsonCreator
   public SongDto(
