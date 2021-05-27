@@ -63,4 +63,8 @@ public class SongService {
     }
     throw new IllegalArgumentException("Nothing changed");
   }
+
+  public SongDto findSongByTitle(String title) {
+    return SongDtoMapper.mapToSongDto(songRepository.findSongByTitle(title));
+  }
 }
