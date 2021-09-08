@@ -1,7 +1,9 @@
 package com.github.tomekmazurek.songsapp.controller;
 
+import com.github.tomekmazurek.songsapp.dto.CategoryDto;
 import com.github.tomekmazurek.songsapp.dto.SongDto;
 import com.github.tomekmazurek.songsapp.service.SongService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -9,46 +11,53 @@ import java.util.List;
 
 @RestController
 @EnableSwagger2
+@CrossOrigin(origins = "*")
 @RequestMapping("/songs")
 public class SongController {
-  private SongService songService;
 
-  public SongController(SongService songService) {
-    this.songService = songService;
-  }
+    private SongService songService;
 
-  @PostMapping
-  public SongDto addSong(@RequestBody SongDto songDto) {
-    return songService.addSong(songDto);
-  }
+    public SongController(SongService songService) {
+        this.songService = songService;
+    }
 
-  @GetMapping
-  public List<SongDto> getSongs() {
-    return songService.getSongs();
-  }
+    @GetMapping("/categories")
+    public ResponseEntity<List<CategoryDto>> getCategories() {
+        return ResponseEntity.ok(songService.getCategories());
+    }
 
-  @GetMapping("/{id}")
-  public SongDto getSong(@PathVariable(name = "id") Long id) {
-    return songService.getSingleSong(id);
-  }
+    @PostMapping
+    public ResponseEntity<SongDto> addSong(@RequestBody SongDto songDto) {
+        return ResponseEntity.ok(songService.addSong(songDto));
+    }
 
-  @PutMapping("/votes/{id}")
-  public SongDto voteForSong(@PathVariable(name = "id") Long id) {
-    return songService.voteForSong(id);
-  }
+    @GetMapping
+    public ResponseEntity<List<SongDto>> getSongs() {
+        return ResponseEntity.ok(songService.getSongs());
+    }
 
-  @PutMapping("/votes")
-  public List<SongDto> clearAllVotes() {
-    return songService.clearAllVotes();
-  }
+    @GetMapping("/{id}")
+    public ResponseEntity<SongDto> getSong(@PathVariable(name = "id") Long id) {
+        return ResponseEntity.ok(songService.getSingleSong(id));
+    }
 
-  @PutMapping("/votes/{id}/clear")
-  public SongDto clearVotesForSong(@PathVariable(name = "id") Long id) {
-    return songService.clearVotes(id);
-  }
+    @PutMapping("/votes/{id}")
+    public ResponseEntity<SongDto> voteForSong(@PathVariable(name = "id") Long id) {
+        return ResponseEntity.ok(songService.voteForSong(id));
+    }
 
-  @PutMapping("/{id}")
-  public SongDto updateSong(@PathVariable(name = "id") Long id, @RequestBody SongDto songDto) {
-    return songService.updateSong(id, songDto);
-  }
+    @PutMapping("/votes")
+    public ResponseEntity<List<SongDto>> clearAllVotes() {
+        return ResponseEntity.ok(songService.clearAllVotes());
+    }
+
+    @PutMapping("/votes/{id}/clear")
+    public ResponseEntity<SongDto> clearVotesForSong(@PathVariable(name = "id") Long id) {
+        return ResponseEntity.ok(songService.clearVotes(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<SongDto> updateSong(@PathVariable(name = "id") Long id, @RequestBody SongDto songDto) {
+        return ResponseEntity.ok(songService.updateSong(id, songDto));
+    }
 }
