@@ -1,7 +1,7 @@
 package com.github.tomekmazurek.songsapp.service;
 
 import com.github.tomekmazurek.songsapp.dto.SongDto;
-import com.github.tomekmazurek.songsapp.dto.SongDtoMapper;
+import com.github.tomekmazurek.songsapp.mapper.SongDtoMapper;
 import com.github.tomekmazurek.songsapp.repository.SongRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

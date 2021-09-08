@@ -1,5 +1,6 @@
 package com.github.tomekmazurek.songsapp.dto;
 
+import com.github.tomekmazurek.songsapp.mapper.SongDtoMapper;
 import com.github.tomekmazurek.songsapp.model.Category;
 import com.github.tomekmazurek.songsapp.model.Song;
 import org.junit.jupiter.api.Test;

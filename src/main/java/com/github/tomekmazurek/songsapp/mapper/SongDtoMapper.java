@@ -1,5 +1,6 @@
-package com.github.tomekmazurek.songsapp.dto;
+package com.github.tomekmazurek.songsapp.mapper;
 
+import com.github.tomekmazurek.songsapp.dto.SongDto;
 import com.github.tomekmazurek.songsapp.model.Album;
 import com.github.tomekmazurek.songsapp.model.Author;
 import com.github.tomekmazurek.songsapp.model.Category;
