@@ -4,9 +4,11 @@ import com.github.tomekmazurek.songsapp.model.Album;
 import com.github.tomekmazurek.songsapp.model.Author;
 import com.github.tomekmazurek.songsapp.model.Category;
 import com.github.tomekmazurek.songsapp.model.Song;
+import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class SongsMother {
 
@@ -63,8 +65,25 @@ public class SongsMother {
     return new SongDto("Back in Black", "AC/DC", "Back in Black", "Rock", 6);
   }
 
+  public static List<SongDto> createTopThreeList() {
+    List<SongDto> report = new ArrayList<>();
+    report.add(createSongDtoFromSong(createTheNumberOfTheBeastSong()));
+    report.add(createSongDtoFromSong(createWhenSorrowSangSong()));
+    report.add(createSongDtoFromSong(createBackInBlackSong()));
+    return report;
+  }
+
   private static Song createSong(
       String title, String author, String album, Category category, int votes) {
     return new Song(title, new Author(author), new Album(album), category, votes);
+  }
+
+  private static SongDto createSongDtoFromSong(Song song) {
+    return new SongDto(
+        song.getTitle(),
+        song.getAuthor().getName(),
+        song.getAlbum().getName(),
+        song.getCategory().getValue(),
+        song.getVotes());
   }
 }

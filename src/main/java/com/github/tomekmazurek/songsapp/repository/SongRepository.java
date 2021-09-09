@@ -19,4 +19,6 @@ public interface SongRepository extends JpaRepository<Song, Long> {
 
   @Query("select s from song s where s.category = :category order by s.votes desc")
   List<Song> selectFromCategory(Category category);
+
+  Song findSongByTitle(String title);
 }

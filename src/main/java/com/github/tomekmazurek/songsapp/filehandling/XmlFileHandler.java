@@ -21,8 +21,8 @@ public class XmlFileHandler implements FileHandler {
 
   @Override
   public File writeToFile(List<SongDto> report) {
-    File generatedFile = new File("report.xml");
-    SongsXml songsXml = new SongsXml(report);
+    var generatedFile = new File("report.xml");
+    var songsXml = new SongsXml(report);
     Serializer serializer = new Persister();
     try {
       serializer.write(songsXml, generatedFile);
