@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: ${databaseUrl}
+    username: ${usernameDb}
+    password: ${passwordDb}
+    platform: postgres
+    hikari:
+      connection-test-query: SELECT 1
+      idle-timeout: 10000
+      maximum-pool-size: 5
+  jpa:
+    database: postgresql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+servlet:
+  multipart:
+    enabled: true
+    file-size-threshold: 2KB
+    max-file-size: 50MB
+    max-request-size: 60MB
