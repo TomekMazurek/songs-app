@@ -20,6 +20,7 @@
         <commons-io.version>2.8.0</commons-io.version>
         <opencsv.version>5.0</opencsv.version>
         <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
+        <postgresql.version>42.2.23</postgresql.version>
     </properties>
     <dependencies>
         <dependency>
@@ -30,28 +31,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<<<<<<< HEAD
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--            <version>7.14.1</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.h2database</groupId>-->
-<!--            <artifactId>h2</artifactId>-->
-<!--        </dependency>-->
-=======
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
->>>>>>> parent of f3eb630 (fix: add system.properties for heroku deployment.)
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
