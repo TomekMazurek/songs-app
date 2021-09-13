@@ -22,7 +22,7 @@ import java.util.List;
 @Controller
 @EnableSwagger2
 @CrossOrigin(origins = "*")
-@RequestMapping("api/v1/files")
+@RequestMapping("/files")
 public class FileController {
 
     private FileService fileService;

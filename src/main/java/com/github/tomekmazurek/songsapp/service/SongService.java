@@ -30,8 +30,12 @@ public class SongService {
     }
 
     public SongDto addSong(SongDto songDto) {
+        if (!songRepository.checkIfSongExists(
+                songDto.getTitle(), songDto.getAuthor(), songDto.getAlbum())) {
             return SongDtoMapper.mapToSongDto(
                     songRepository.save(SongDtoMapper.convertToEntity(songDto)));
+        }
+        throw new IllegalArgumentException("Song already exists in database");
     }
 
     public SongDto voteForSong(Long id) {

@@ -15,30 +15,26 @@ import java.util.Objects;
 @Getter
 @Setter
 public class Author implements Serializable {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "author_id_seq", sequenceName = "author_id_seq", allocationSize = 1)
-    @Column(name = "author_id")
-    private Long id;
+  @Column private String name;
 
-    @Column(name = "name")
-    private String name;
+  public Author(String name) {
+    this.name = name;
+  }
 
-    public Author(String name) {
-        this.name = name;
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    var author = (Author) o;
+    return name.equals(author.name);
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        var author = (Author) o;
-        return name.equals(author.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(name);
+  }
 }

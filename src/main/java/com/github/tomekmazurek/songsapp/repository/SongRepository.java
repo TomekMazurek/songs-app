@@ -16,7 +16,7 @@ public interface SongRepository extends JpaRepository<Song, Long> {
           + "and lower( s.author.name) like lower(:author) "
           + "and lower( s.album.name) like lower( :album)")
   boolean checkIfSongExists(String title, String author, String album);
-Song findSongByTitleAndAlbumAndAuthor(String title,String author, String album);
+
   @Query("select s from song s where s.category = :category order by s.votes desc")
   List<Song> selectFromCategory(Category category);
 
