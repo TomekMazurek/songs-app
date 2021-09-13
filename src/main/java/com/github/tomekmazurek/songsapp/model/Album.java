@@ -14,7 +14,9 @@ import java.util.Objects;
 @NoArgsConstructor
 public class Album implements Serializable {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @SequenceGenerator(name = "album_id_seq", sequenceName = "album_id_seq", allocationSize = 1)
+  @Column(name = "album_id")
   private Long id;
 
   @Column(name = "name")

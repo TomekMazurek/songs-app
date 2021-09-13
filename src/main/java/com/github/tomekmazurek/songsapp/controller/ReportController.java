@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @EnableSwagger2
 @CrossOrigin(origins = "*")
-@RequestMapping("/reports")
+@RequestMapping("api/v1/reports")
 public class ReportController {
 
     private ReportService reportService;

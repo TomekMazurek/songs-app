@@ -13,10 +13,16 @@ spring:
     show-sql: true
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
+#  flyway:
+#    baseline-on-migrate: true
+#    validate-on-migrate: true
+
 servlet:
   multipart:
     enabled: true
     file-size-threshold: 2KB
     max-file-size: 50MB
     max-request-size: 60MB
+server:
+  port: 8092

@@ -15,7 +15,9 @@ import java.util.Objects;
 @Builder
 public class Song implements Serializable {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @SequenceGenerator(name = "song_id_seq", sequenceName = "song_id_seq", allocationSize = 1)
+  @Column(name = "song_id")
   private Long id;
 
   @Column(name = "title")
