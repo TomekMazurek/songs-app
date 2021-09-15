@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @EnableSwagger2
 @CrossOrigin(origins = "*")
-@RequestMapping("/songs")
+@RequestMapping("api/v1/songs")
 public class SongController {
 
     private SongService songService;
