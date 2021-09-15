@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SongService {
@@ -22,7 +24,12 @@ public class SongService {
     }
 
     public List<SongDto> getSongs() {
-        return SongDtoMapper.mapToSongDtos(songRepository.findAll());
+        return SongDtoMapper.mapToSongDtos(
+                songRepository
+                        .findAll()
+                        .stream()
+                        .sorted(Comparator.comparing(Song::getTitle))
+                        .collect(Collectors.toList()));
     }
 
     public SongDto getSingleSong(Long id) {
@@ -46,7 +53,7 @@ public class SongService {
 
     public List<SongDto> clearAllVotes() {
         List<Song> songs = songRepository.findAll();
-        songs.stream().forEach(song -> song.setVotes(0));
+        songs.forEach(song -> song.setVotes(0));
         return SongDtoMapper.mapToSongDtos(songRepository.saveAll(songs));
     }
 
