@@ -40,6 +40,11 @@ public class SongDto {
     @Element(name = "votes")
     int votes;
 
+    @ApiModelProperty(value = "youtubeId", dataType = "String", example = "YkgkThdzX-8")
+    @CsvBindByName
+    @Element(name = "youtubeId")
+    String youtubeId;
+
     @JsonCreator
     public SongDto(
             @JsonProperty("id") Long id,
@@ -47,13 +52,15 @@ public class SongDto {
             @JsonProperty("author") String author,
             @JsonProperty("album") String album,
             @JsonProperty("category") String category,
-            @JsonProperty("votes") int votes) {
+            @JsonProperty("votes") int votes,
+            @JsonProperty("youtubeId") String youtubeId) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.album = album;
         this.category = category;
         this.votes = votes;
+        this.youtubeId = youtubeId;
     }
 
     @JsonCreator
@@ -62,11 +69,13 @@ public class SongDto {
             @JsonProperty("author") String author,
             @JsonProperty("album") String album,
             @JsonProperty("category") String category,
-            @JsonProperty("votes") int votes) {
+            @JsonProperty("votes") int votes,
+            @JsonProperty("youtubeId") String youtubeId) {
         this.title = title;
         this.author = author;
         this.album = album;
         this.category = category;
         this.votes = votes;
+        this.youtubeId = youtubeId;
     }
 }
