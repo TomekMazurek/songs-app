@@ -6,6 +6,7 @@ import com.opencsv.bean.CsvBindByName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import org.hibernate.internal.build.AllowSysOut;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
@@ -39,6 +40,8 @@ public class SongDto {
     @CsvBindByName
     @Element(name = "votes")
     int votes;
+
+    @ApiModelProperty(value="youtubeLink", dataType = "String", example)
 
     @JsonCreator
     public SongDto(
