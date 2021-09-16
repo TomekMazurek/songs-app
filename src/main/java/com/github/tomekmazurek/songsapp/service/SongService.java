@@ -71,6 +71,7 @@ public class SongService {
             readFromDatabase.setTitle(toBeUpdated.getTitle());
             readFromDatabase.setAlbum(toBeUpdated.getAlbum());
             readFromDatabase.setCategory(toBeUpdated.getCategory());
+            readFromDatabase.setYoutubeEmbedId(toBeUpdated.getYoutubeEmbedId());
             return SongDtoMapper.mapToSongDto(songRepository.save(readFromDatabase));
         }
         throw new IllegalArgumentException("Nothing changed");

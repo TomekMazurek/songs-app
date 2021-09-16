@@ -36,22 +36,30 @@ public class Song implements Serializable {
     private Category category;
     @Column(name = "votes")
     private Integer votes;
-    @Column(name = "youtube_link")
-    private String youtubeLink;
+    @Column(name = "youtube_embed_id")
+    private String youtubeEmbedId;
 
-    public Song(String title, Author author, Album album, Category category, int votes, String youtubeLink) {
+    public Song(String title, Author author, Album album, Category category, int votes, String youtubeEmbedId) {
         this.title = title;
         this.author = author;
         this.album = album;
         this.category = category;
         this.votes = votes;
-        this.youtubeLink=youtubeLink;
+        this.youtubeEmbedId = youtubeEmbedId;
     }
 
     public Song(String title, Author author, Album album) {
         this.title = title;
         this.author = author;
         this.album = album;
+    }
+
+    public Song(String title, Author author, Album album, Category category, int votes) {
+        this.title = title;
+        this.author = author;
+        this.album = album;
+        this.category = category;
+        this.votes = votes;
     }
 
     @Override

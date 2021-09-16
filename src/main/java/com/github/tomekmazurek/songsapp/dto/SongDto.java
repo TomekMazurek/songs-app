@@ -6,7 +6,6 @@ import com.opencsv.bean.CsvBindByName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
-import org.hibernate.internal.build.AllowSysOut;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
@@ -41,7 +40,10 @@ public class SongDto {
     @Element(name = "votes")
     int votes;
 
-    @ApiModelProperty(value="youtubeLink", dataType = "String", example)
+    @ApiModelProperty(value = "youtubeId", dataType = "String", example = "YkgkThdzX-8")
+    @CsvBindByName
+    @Element(name = "youtubeId")
+    String youtubeId;
 
     @JsonCreator
     public SongDto(
@@ -50,13 +52,15 @@ public class SongDto {
             @JsonProperty("author") String author,
             @JsonProperty("album") String album,
             @JsonProperty("category") String category,
-            @JsonProperty("votes") int votes) {
+            @JsonProperty("votes") int votes,
+            @JsonProperty("youtubeId") String youtubeId) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.album = album;
         this.category = category;
         this.votes = votes;
+        this.youtubeId = youtubeId;
     }
 
     @JsonCreator
@@ -65,11 +69,13 @@ public class SongDto {
             @JsonProperty("author") String author,
             @JsonProperty("album") String album,
             @JsonProperty("category") String category,
-            @JsonProperty("votes") int votes) {
+            @JsonProperty("votes") int votes,
+            @JsonProperty("youtubeId") String youtubeId) {
         this.title = title;
         this.author = author;
         this.album = album;
         this.category = category;
         this.votes = votes;
+        this.youtubeId = youtubeId;
     }
 }
