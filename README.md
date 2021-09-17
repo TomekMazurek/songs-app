@@ -2,17 +2,10 @@
 
 ### Description
 
-Songs App is backend application for Songs-vote-client app. Currently running on Heroku Platform. The app is responsible
+Songs App is backend project for Songs-vote-client app that is being deployed on Heroku Platform. The app is responsible
 for providing API for the client app. Uses Heroku Postgres DB.
 
-### Table of contents
-
 ### Installation
-
-#### Running on localhost
-
-For running the app on your localhost clone the repository and build the project with `mvn build` command. App runs on
-port 8092
 
 #### Running on Heroku
 
@@ -21,8 +14,7 @@ visit [https://mazurek-songs-app.herokuapp.com](https://mazurek-songs-app.heroku
 
 ### Usage
 
-To see API documentation go to `localhost:8092/swagger-ui/#` or `https://mazurek-songs-app.herokuapp.com/swagger-ui/#`
-
+To see API documentation go to `https://mazurek-songs-app.herokuapp.com/swagger-ui/#`
 ### Technologies
 
 * Java 16
